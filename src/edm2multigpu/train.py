@@ -49,7 +49,7 @@ def train(opt):
     diff = torch.nn.parallel.DistributedDataParallel(
         diff, device_ids=[local_rank], output_device=local_rank)
 
-    train_set = get_dataset(name=opt.dataset, root="./data", train=True, flip=opt.flip)
+    train_set = get_dataset(name=opt.dataset, root="./data", train=True, flip=opt.flip, crop=False, resize=None, download=True)
     print0("train dataset:", len(train_set))
 
     total_bs = opt.batch_size

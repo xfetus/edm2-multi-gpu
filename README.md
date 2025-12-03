@@ -19,10 +19,9 @@ uv pip list --verbose
 ## Usage
 Use 4 GPUs to train unconditional Config C/E/G models on the CIFAR-100 dataset:
 ```bash
-torchrun --nproc_per_node=4
-  train.py  --config config/cifar100/C.yaml --use_amp
-  train.py  --config config/cifar100/E.yaml --use_amp
-  train.py  --config config/cifar100/G.yaml --use_amp
+GPUS=1
+torchrun --nproc_per_node=${GPUS} train.py --config ../../config/cifar100/C.yaml --use_amp
+#train.py --config ../../config/cifar100/E.yaml --use_amp train.py --config ../../config/cifar100/G.yaml --use_amp
 ```
 
 To generate 50000 images with different checkpoints, for example, run:

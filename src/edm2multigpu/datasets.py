@@ -72,7 +72,9 @@ class TinyImageNet(Dataset):
         return image, label
 
 
-def get_dataset(name, root="./data", train=True, flip=False, crop=False, resize=None):
+
+
+def get_dataset(name, root="./data", train=True, flip=False, crop=False, resize=None, download=True):
     if name == 'cifar':
         DATASET = CIFAR10
         RES = 32
@@ -94,4 +96,8 @@ def get_dataset(name, root="./data", train=True, flip=False, crop=False, resize=
         if flip:
             tf = [transforms.RandomHorizontalFlip()] + tf
 
-    return DATASET(root=root, train=train, transform=transforms.Compose(tf))
+    # Create the root directory if it doesn't exist
+    os.makedirs(root, exist_ok=True)
+    
+    return DATASET(root=root, train=train, transform=transforms.Compose(tf), download=download)
+
