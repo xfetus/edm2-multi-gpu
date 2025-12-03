@@ -24,7 +24,7 @@ network:
   n_blocks: 3 # equiv. to "n_blocks=2" in UNetHo + "use BigGAN up/down"
 
 # training params
-n_epoch: 2000
+n_epoch: 2 #2000
 batch_size: 512
 lrate: 2.0e-2
 warm_epoch: 200
