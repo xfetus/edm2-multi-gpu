@@ -26,10 +26,9 @@ torchrun --nproc_per_node=${GPUS} train.py --config ../../config/cifar100/E.yaml
 
 To generate 50000 images with different checkpoints, for example, run:
 ```bash
-torchrun --nproc_per_node=4
-  sample.py --config config/cifar100/C.yaml --use_amp --epoch 1000
-  sample.py --config config/cifar100/E.yaml --use_amp --epoch 1600
-  sample.py --config config/cifar100/G.yaml --use_amp --epoch 1999
+GPUS=1
+torchrun --nproc_per_node=${GPUS} sample.py --config ../../config/cifar100/C.yaml --use_amp --epoch 1000
+torchrun --nproc_per_node=${GPUS} sample.py --config ../../config/cifar100/E.yaml --use_amp --epoch 1600
 ```
 
 ## Observations and takeaways
@@ -62,5 +61,10 @@ We report Config C and Config E results on CIFAR-10, CIFAR-100, and Tiny-ImageNe
   journal={arXiv preprint arXiv:2312.02696},
   year={2023}
 }
+```
+
+## Clone repository
+```bash
+git clone https://github.com/xfetus/edm2-multi-gpu.git
 ```
 
